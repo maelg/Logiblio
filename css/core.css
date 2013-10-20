@@ -1,0 +1,35 @@
+:root {
+	font-family: 'Titillium Web', sans-serif;
+}
+
+.btns li, .btn {
+	display: inline-block;
+	border: 3px solid #3264c8;
+	border-radius: 3px;
+	background-color: #3264c8;
+	padding: 8px 12px 8px 12px;
+	margin: 5px;
+}
+
+.btns li a, .btn {
+	text-decoration: none;
+	color: white;
+}
+
+.pull-right {
+	float: right;
+}
+
+input {
+	background-color: #fff;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+	transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+}
+
+input:focus {
+	border-color: rgba(82, 168, 236, 0.8);
+	outline: 0px none;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(82, 168, 236, 0.6);
+}
