@@ -2,6 +2,21 @@
 	font-family: 'Titillium Web', sans-serif;
 }
 
+.bloc {
+	margin: 10px;
+	padding: 10px;
+	border-radius: 5px;
+    padding: 19px 29px 29px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(229, 229, 229);
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.btns { 
+	margin: 0;
+	padding:0;
+}
+
 .btns li, .btn {
 	display: inline-block;
 	border: 3px solid #3264c8;
@@ -16,6 +31,11 @@
 	color: white;
 }
 
+.btn.btn-danger {
+	border-color: #d2322d;
+	background-color: #d2322d;
+}
+
 .pull-right {
 	float: right;
 }
@@ -26,6 +46,10 @@ input {
 	border-radius: 3px;
 	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
 	transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+	border: 1px solid #cccccc;
+	height: 20px;
+	padding: 4px 6px;
+	font-size: 15px;
 }
 
 input:focus {
