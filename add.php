@@ -54,19 +54,20 @@ if(isset($_POST['isbn']))
 	$results = json_decode($response);  
 	  
 	if($results->totalItems > 0){  
-	   // avec de la chance, ce sera le 1er trouvé  
-	   $book = $results->items[0];  
+	    // avec de la chance, ce sera le 1er trouvé  
+	    $book = $results->items[0];  
 	  
-	   $infos['isbn'] = $book->volumeInfo->industryIdentifiers[0]->identifier;  
-	   $infos['titre'] = $book->volumeInfo->title;  
-	   $infos['auteur'] = $book->volumeInfo->authors[0];  
-	   $infos['langue'] = $book->volumeInfo->language;  
-	   $infos['publication'] = $book->volumeInfo->publishedDate;  
-	   $infos['pages'] = $book->volumeInfo->pageCount;  
+	    $infos['isbn'] = $book->volumeInfo->industryIdentifiers[0]->identifier;  
+	    $infos['titre'] = $book->volumeInfo->title;  
+	    $infos['auteur'] = $book->volumeInfo->authors[0];  
+	    $infos['langue'] = $book->volumeInfo->language;  
+	    $infos['publication'] = $book->volumeInfo->publishedDate;  
+	    $infos['pages'] = $book->volumeInfo->pageCount;  
 	  
-	   if( isset($book->volumeInfo->imageLinks) ){  
-	       $infos['image'] = str_replace('&edge=curl', '', $book->volumeInfo->imageLinks->thumbnail);  
-	   }  
+	    if( isset($book->volumeInfo->imageLinks) )
+	        $infos['image'] = str_replace('&edge=curl', '', $book->volumeInfo->imageLinks->thumbnail);  
+	    else
+	    	$infos['image'] = null;
 	  
 	}  
 	else{  
@@ -83,15 +84,27 @@ if(isset($_POST['isbn']))
 					<p><a href="#" class="btn" id="confirm">Oui</a><a href="#" class="btn btn-danger">Non</a></p>
 				</div>
 			</div>
+			<script type="text/javascript">
+				if($('#confirm'))
+					$('#confirm').focus();
+				else
+					$('#isbn').focus();
+
+				$('#confirm').click(function() {
+					$.ajax({
+					  type: "POST",
+					  url: "ajax/add.php",
+					  data: {book : <?php echo json_encode($infos); ?>}
+					})
+					  .done(function( msg ) {
+					    alert( "Data Saved: " + msg );
+					});
+				});
+			</script>
 <?php
-} //fin 'si un code est entré'
+}
 ?>
 		</div>
-		<script type="text/javascript">
-			if($('#confirm'))
-				$('#confirm').focus();
-			else
-				$('isbn').focus();
-		</script>
+		
 	</body>
 </html>
