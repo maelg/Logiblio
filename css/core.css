@@ -26,6 +26,10 @@
 	margin: 5px;
 }
 
+.btn:focus {
+	border: 3px dashed red;
+}
+
 .btns li a, .btn {
 	text-decoration: none;
 	color: white;
