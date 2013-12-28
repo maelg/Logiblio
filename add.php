@@ -33,27 +33,47 @@
 				<p>Pour ajouter un livre à la base de données de Logiblio, vous pouvez entrer son code ISBN, les informations du livre serons alors recherché</p>
 				<p><a class="btn btn-primary btn-md" role="button">Guider moi</a></p>
 			</div>
-			<div class="content">
-			<form class="bloc add" method="post" action="add.php">
-				<div>
-								<h2>Recherche avec un code ISBN</h2>
-
-					<input type="text" name="isbn" id="isbn" placeholder="Code ISBN" />
-									<p>
-					<a href="#" class="btn btn-primary">Rechercher</a>
-				</p>
-
+			<div class="content row">
+				<div class="col-md-6">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							Recherche avec un code ISBN
+						</div>
+						<div class="panel-body">
+							<form method="post" action="add.php">
+								<div class="input-group">
+									<input type="text" name="isbn" id="isbn" class="form-control" placeholder="Code ISBN" autofocus>
+									<span class="input-group-btn">
+										<input type="submit" value="Rechercher" class="btn btn-primary" />
+									</span>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							Que voulez-vous ajouter
+						</div>
+						<div class="panel-body">
+							<ul>
+								<li>Livre</li>
+								<li>CD</li>
+								<li>DVD</li>
+							</ul>
+						</div>
+					</div>
 				</div>
 <?php $owner = (!isset($_POST['owner'])) ? null : $_POST['owner']; ?>
-				<div>
+<!--				<div>
 					<h3>Livre appartenant à</h3>
 					<input type="radio" name="owner" value="thierry" id="thierry" <?php if($owner == 'thierry') echo 'checked'; ?> /> <label for="thierry">Thierry</label><br>
 			        <input type="radio" name="owner" value="beatrice" id="beatrice" <?php if($owner == 'beatrice') echo 'checked'; ?> /> <label for="beatrice">Béatrice</label><br>
 			        <input type="radio" name="owner" value="mathilde" id="mathilde" <?php if($owner == 'mathilde') echo 'checked'; ?> /> <label for="mathilde">Mathilde</label><br>
 			        <input type="radio" name="owner" value="mael" id="mael" <?php if($owner == 'mael') echo 'checked'; ?> /> <label for="mael">Maël</label><br>
 			        <input type="radio" name="owner" value="elouan" id="elouan" <?php if($owner == 'elouan') echo 'checked'; ?> /> <label for="elouan">Elouan</label>
-			    </div>
-			</form>
+			    </div>-->
 <?php
 if(isset($_POST['isbn']))
 {
@@ -81,16 +101,21 @@ if(isset($_POST['isbn']))
 	    else
 	    	$infos['image'] = null;
 ?>
-			<div class="bloc livre">
-				<div>
-					<img src="<?php echo $infos['image']; ?>" style="float: left;" alt="">
-					<p class="info"><?php echo $infos['titre']; ?> - <?php echo $infos['auteur']; ?><br><small><?php echo $infos['isbn']; ?></small><br>Nbr de pages <?php echo $infos['pages']; ?></p>
-				</div>
-				<div class="confirm">
-					<p>Est-ce le bon livre ?</p>
-					<p><a href="#" class="btn btn-success" id="confirm">Oui</a><a href="#" class="btn btn-danger">Non</a></p>
-				</div>
-			</div>
+					<div class="col-md-12">
+						<div class="panel panel-primary">
+							<div class="panel-heading">Résultats</div>
+							<div class="panel-body">
+								<div class="col-md-6">
+									<img src="<?php echo $infos['image']; ?>" style="float: left;" alt="">
+									<p class="info"><?php echo $infos['titre']; ?> - <?php echo $infos['auteur']; ?><br><small><?php echo $infos['isbn']; ?></small><br>Nbr de pages <?php echo $infos['pages']; ?></p>
+								</div>
+								<div class="col-md-6 confirm">
+									<p>Est-ce le bon livre ?</p>
+									<p><a href="#" class="btn btn-success" id="confirm">Oui</a><a href="#" class="btn btn-danger">Non</a></p>
+								</div>
+							</div>
+						</div>
+					</div>
 <?php
 	}
 	else{  
@@ -142,7 +167,7 @@ if(isset($_POST['isbn']))
 					    notifyMe('Livre enregistré', 5000)
 					    $('#isbn').focus();
 					});
-				});
+				}); 
 			</script>
 <?php
 }
