@@ -1,0 +1,20 @@
+.livre div {
+	display: inline-block;
+	width: 49%;
+	box-sizing: border-box;
+}
+
+.add div {
+	display: inline-block;
+	width: 49%;
+	box-sizing: border-box;
+	vertical-align: top;
+}
+
+.jumbotron {
+	font-size: 15px;
+}
+
+.jumbotron h1 {
+	font-size: 30px;
+}

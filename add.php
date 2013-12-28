@@ -1,52 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html ng-app>
 	<head>
 		<meta charset="utf-8" />
-		<title>Logiblio - Connexion</title>
+		<title>Logiblio - Ajouter un livre</title>
 		<link href='http://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" href="css/core.css" />
+		<link rel="stylesheet" href="css/bootstrap.css" />
 		<link rel="stylesheet" href="css/app.css" />
+		<link rel="stylesheet" href="css/add.php.css" />
 		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<style type="text/css">
-			.livre div {
-				display: inline-block;
-				width: 49%;
-				box-sizing: border-box;
-			}
-			.add div {
-				display: inline-block;
-				width: 49%;
-				box-sizing: border-box;
-				vertical-align: top;
-			}
-		</style>
+		<script type="text/javascript" src="js/angular.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	</head>
 	<body>
-		<div id="sidebar">
-			<header>
+		<div class="col-md-3" id="sidebar">
+			<header class="page-header">
 				<h1>Logiblio</h1>
 			</header>
 			<div class="hero-unit">
-				<p>Entrez un code ISBN pour ajouter un livre à Logiblio</p>
+				<p>Ajouter un livre à Logiblio</p>
 				<nav>
-					<ul class="btns">
-						<li><a href="index.html">Retour</a></li>
-						<li><a href="musique.html">Aide</a></li>
-					</ul>
+					<a href="index.html" class="btn btn-lg btn-primary">Retour</a>
+					<a href="musique.html" class="btn btn-lg btn-primary">Aide</a>
 				</nav>
 			</div>
 			<footer>
 				<p>Copyright 2013 Mael Guillossou</p>
 			</footer>
 		</div>
-		<div id="content">
+		<div class="col-md-9" id="page">
+			<div class="jumbotron">
+				<h1>Ajouter un livre</h1>
+				<p>Pour ajouter un livre à la base de données de Logiblio, vous pouvez entrer son code ISBN, les informations du livre serons alors recherché</p>
+				<p><a class="btn btn-primary btn-md" role="button">Guider moi</a></p>
+			</div>
+			<div class="content">
 			<form class="bloc add" method="post" action="add.php">
 				<div>
 								<h2>Recherche avec un code ISBN</h2>
 
-					<input type="text" name="isbn" id="isbn" placeholder="Code ISBN"/>
+					<input type="text" name="isbn" id="isbn" placeholder="Code ISBN" />
 									<p>
-					<a href="#" class="btn">Rechercher</a>
+					<a href="#" class="btn btn-primary">Rechercher</a>
 				</p>
 
 				</div>
@@ -94,7 +88,7 @@ if(isset($_POST['isbn']))
 				</div>
 				<div class="confirm">
 					<p>Est-ce le bon livre ?</p>
-					<p><a href="#" class="btn" id="confirm">Oui</a><a href="#" class="btn btn-danger">Non</a></p>
+					<p><a href="#" class="btn btn-success" id="confirm">Oui</a><a href="#" class="btn btn-danger">Non</a></p>
 				</div>
 			</div>
 <?php
@@ -154,6 +148,7 @@ if(isset($_POST['isbn']))
 }
 ?>
 		</div>
-		
+		</div>
+		</div>
 	</body>
 </html>
