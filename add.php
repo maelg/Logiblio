@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app>
+<html>
 	<head>
 		<meta charset="utf-8" />
 		<title>Logiblio - Ajouter un livre</title>
@@ -9,9 +9,10 @@
 		<link rel="stylesheet" href="css/add.php.css" />
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/angular.min.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	</head>
-	<body>
+	<body ng-app>
 		<div class="col-md-3" id="sidebar">
 			<header class="page-header">
 				<h1>Logiblio</h1>
@@ -27,7 +28,7 @@
 				<p>Copyright 2013 Mael Guillossou</p>
 			</footer>
 		</div>
-		<div class="col-md-9" id="page">
+		<div class="col-md-9" id="page" ng-controller="LogiblioAdd">
 			<div class="jumbotron">
 				<h1>Ajouter un livre</h1>
 				<p>Pour ajouter un livre à la base de données de Logiblio, vous pouvez entrer son code ISBN, les informations du livre serons alors recherché</p>
@@ -40,11 +41,11 @@
 							Recherche avec un code ISBN
 						</div>
 						<div class="panel-body">
-							<form method="post" action="add.php">
+							<form ng-submit="search()">
 								<div class="input-group">
-									<input type="text" name="isbn" id="isbn" class="form-control" placeholder="Code ISBN" autofocus>
+									<input type="text" name="isbn" id="isbn" class="form-control" placeholder="Code ISBN" autofocus ng-model="isbn">
 									<span class="input-group-btn">
-										<input type="submit" value="Rechercher" class="btn btn-primary" />
+										<button class="btn btn-primary">Rechercher</button>
 									</span>
 								</div>
 							</form>
@@ -54,7 +55,7 @@
 				<div class="col-md-6">
 					<div class="panel panel-primary">
 						<div class="panel-heading">
-							Que voulez-vous ajouter
+							Que voulez-vous ajouter ?
 						</div>
 						<div class="panel-body">
 							<ul>
@@ -62,6 +63,21 @@
 								<li>CD</li>
 								<li>DVD</li>
 							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12" ng-repeat="result in results">
+					<div class="panel panel-primary">
+						<div class="panel-heading">Résultats</div>
+						<div class="panel-body">
+							<div class="col-md-6">
+								<img src="" style="float: left;" alt="">
+								<p class="info">{{result.name}} - {{result.author}}<br><small>{{result.isbn}}</small><br>Nbr de pages ...</p>
+							</div>
+							<div class="col-md-6 confirm">
+								<p>Est-ce le bon livre ?</p>
+								<p><a href="#" class="btn btn-success" id="confirm">Oui</a><a href="#" class="btn btn-danger">Non</a></p>
+							</div>
 						</div>
 					</div>
 				</div>
