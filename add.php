@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app>
 	<head>
 		<meta charset="utf-8" />
 		<title>Logiblio - Ajouter un livre</title>
@@ -12,7 +12,7 @@
 		<script type="text/javascript" src="js/app.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	</head>
-	<body ng-app>
+	<body>
 		<div class="col-md-3" id="sidebar">
 			<header class="page-header">
 				<h1>Logiblio</h1>

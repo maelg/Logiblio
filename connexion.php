@@ -10,7 +10,7 @@
 	</head>
 	<body>
 		<div class="col-md-3" id="sidebar">
-			<header>
+			<header class="page-header">
 				<h1>Logiblio</h1>
 			</header>
 			<div class="hero-unit">
