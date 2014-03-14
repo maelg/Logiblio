@@ -93,15 +93,13 @@
 <?php
 if(isset($_POST['isbn']))
 {
-	// ou si vous préférez hardcodé  
-	// $isbn = '0061234001';  
 	  
 	$request = 'https://www.googleapis.com/books/v1/volumes?q=isbn:' . $_POST['isbn'];  
 	$response = file_get_contents($request);  
 	$results = json_decode($response);  
 	  
-	if($results->totalItems > 0){  
-	    // avec de la chance, ce sera le 1er trouvé  
+	if($results->totalItems > 0){
+	    // On recupere le premier resultat
 	    $book = $results->items[0];  
 	  
 	    $infos['isbn'] = $book->volumeInfo->industryIdentifiers[0]->identifier;  
