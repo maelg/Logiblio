@@ -7,7 +7,7 @@ include('../../logiblio.config.php');
 class Amazon {
  
 	public static $secretKey;
-	public static $publicKey = 'AKIAJBXCBAOFFX4B6DCQ';
+	public static $publicKey = '';
 	public static $associateTag = 'logiblio-20';
 	private static $_key;
 	private static $_hashAlgorithm;
